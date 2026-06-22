@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quinie Cui — Portfolio</title>
+
+  <!-- Fonts: Caveat for handwritten headings, Inter for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & base ───────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #EAE6DF;
+      --navy:      #2C3A52;
+      --navy-soft: #3D4F68;
+      --muted:     #6B7280;
+      --accent:    #C8B89A;   /* warm tan — used sparingly */
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--navy);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav ────────────────────────────────────────── */
+    nav {
+      display: flex;
+      align-items: center;
+      padding: 28px 64px;
+      gap: 40px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 40px;
+      list-style: none;
+      flex: 1;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+
+    nav .nav-links a:hover { opacity: 0.55; }
+
+    nav .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-left: auto;
+    }
+
+    nav .nav-icons a {
+      color: var(--navy);
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    nav .nav-icons a:hover { opacity: 1; }
+
+    nav .nav-icons svg { width: 22px; height: 22px; }
+
+    /* ── Hero ───────────────────────────────────────── */
+    .hero {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 60px 64px 80px;
+      gap: 48px;
+    }
+
+    .hero-text { max-width: 520px; }
+
+    .hero-text h1 {
+      font-family: 'Caveat', cursive;
+      font-size: clamp(52px, 6vw, 76px);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .hero-text p {
+      font-size: 17px;
+      color: var(--navy-soft);
+      max-width: 460px;
+      line-height: 1.75;
+    }
+
+    .hero-photo {
+      flex-shrink: 0;
+    }
+
+    .hero-photo img {
+      width: clamp(260px, 28vw, 380px);
+      height: auto;
+      display: block;
+      /* slight vintage feel — matches the photo's own aesthetic */
+      filter: sepia(8%) contrast(1.02);
+    }
+
+    /* ── Footer / Let's Connect ─────────────────────── */
+    footer {
+      padding: 48px 64px 52px;
+      border-top: 1px solid var(--accent);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .footer-left h2 {
+      font-family: 'Caveat', cursive;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .footer-left p {
+      font-size: 15px;
+      color: var(--navy-soft);
+      max-width: 340px;
+      line-height: 1.7;
+    }
+
+    .footer-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 14px;
+    }
+
+    .footer-right .email {
+      font-size: 15px;
+      color: var(--navy-soft);
+    }
+
+    .footer-right .email a {
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      transition: opacity 0.2s;
+    }
+
+    .footer-right .email a:hover { opacity: 0.55; }
+
+    .footer-icons {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .footer-icons a {
+      color: var(--navy);
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+
+    .footer-icons a:hover { opacity: 1; }
+
+    .footer-icons svg { width: 22px; height: 22px; }
+
+    /* ── Responsive ─────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; gap: 24px; }
+      nav .nav-links { gap: 20px; flex-wrap: wrap; }
+
+      .hero {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+        padding: 36px 24px 60px;
+      }
+
+      .hero-photo img { width: 100%; max-width: 360px; }
+
+      footer {
+        flex-direction: column;
+        padding: 40px 24px 44px;
+      }
+
+      .footer-right { align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="about.html">About me</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="creative.html">Creative Corner</a></li>
+    </ul>
+
+    <div class="nav-icons">
+      <!-- LinkedIn -->
+      <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.447 20.452H17.21v-5.569c0-1.327-.024-3.037-1.851-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.988V9h3.104v1.561h.044c.432-.82 1.487-1.684 3.059-1.684 3.27 0 3.873 2.152 3.873 4.95v6.625zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.604 13.019H3.733V9h3.208v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+        </svg>
+      </a>
+      <!-- GitHub -->
+      <a href="https://github.com/qcui68" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero">
+    <div class="hero-text">
+      <h1>Hi, I'm Quinie!</h1>
+      <p>
+        Welcome to my journal! I'm a fourth year integrated engineering student
+        specializing in electrical and mechanical engineering. I'm passionate about
+        integrating creative design with hands-on engineering to create meaningful solutions.
+      </p>
+    </div>
+
+    <div class="hero-photo">
+      <!-- Replace src with the path to your actual photo -->
+      <img src="photo.jpg" alt="Quinie sitting on a bench outdoors" />
+    </div>
+  </section>
+
+  <!-- ── Footer / Let's Connect ── -->
+  <footer>
+    <div class="footer-left">
+      <h2>Let's Connect!</h2>
+      <p>I'm always interested in new opportunities and experiences, feel free to reach out and let's chat!</p>
+    </div>
+
+    <div class="footer-right">
+      <p class="email">Email: <a href="mailto:quiniecui@gmail.com">quiniecui@gmail.com</a></p>
+      <div class="footer-icons">
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/YOUR-LINKEDIN" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.447 20.452H17.21v-5.569c0-1.327-.024-3.037-1.851-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.988V9h3.104v1.561h.044c.432-.82 1.487-1.684 3.059-1.684 3.27 0 3.873 2.152 3.873 4.95v6.625zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.604 13.019H3.733V9h3.208v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <!-- GitHub -->
+        <a href="https://github.com/qcui68" target="_blank" rel="noopener" aria-label="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
