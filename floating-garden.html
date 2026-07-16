@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Autonomous Floating Garden — Quinie Cui</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Pangolin&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #efeee8;
+      --navy:      #2E4256;
+      --navy-soft: #3D4F68;
+      --muted:     #6B7280;
+      --accent:    #C8B89A;
+      --box-bg:    #D6DCC7;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--navy);
+      font-family: 'Averia Serif Libre', serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav (shared across pages) ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 200px;
+      gap: 30px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+
+    nav .nav-links a:hover { opacity: 0.55; }
+
+    nav .nav-links a.active {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 2px;
+    }
+
+    nav .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    nav .nav-icons a {
+      color: var(--navy);
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    nav .nav-icons a:hover { opacity: 1; }
+    nav .nav-icons svg { width: 22px; height: 22px; }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-block;
+      width: fit-content;
+      margin: 0 200px;
+      font-size: 14px;
+      color: var(--navy-soft);
+      text-decoration: none;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+
+    .back-link:hover { opacity: 1; }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 24px 200px 8px;
+    }
+
+    .page-header h1 {
+      font-family: 'Pangolin', cursive;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    /* ── Hero: overview + photo ── */
+    .project-hero {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 60px;
+      padding: 24px 200px 48px;
+    }
+
+    .project-hero-text {
+      max-width: 620px;
+    }
+
+    .project-hero-text .label {
+      font-family: 'Pangolin', cursive;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+
+    .project-hero-text p {
+      font-size: 16px;
+      color: var(--navy-soft);
+      line-height: 1.75;
+    }
+
+    .project-hero-photo {
+      flex-shrink: 0;
+    }
+
+    .project-hero-photo img {
+      width: clamp(280px, 30vw, 420px);
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
+    }
+
+    /* ── Details: team photo + info box ── */
+    .project-details {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 60px;
+      padding: 32px 200px 96px;
+      flex-wrap: wrap;
+    }
+
+    .project-photo {
+      flex: 1 1 380px;
+      max-width: 480px;
+    }
+
+    .project-photo img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
+    }
+
+    .project-info-box {
+      flex: 1 1 420px;
+      max-width: 620px;
+      background-color: var(--box-bg);
+      border-radius: 10px;
+      padding: 40px;
+    }
+
+    .project-info-box h2 {
+      font-family: 'Pangolin', cursive;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .project-info-box h2:not(:first-child) {
+      margin-top: 28px;
+    }
+
+    .skills-columns {
+      display: flex;
+      gap: 40px;
+    }
+
+    .skills-columns ul,
+    .contributions {
+      list-style: none;
+    }
+
+    .skills-columns li,
+    .contributions li {
+      font-size: 15px;
+      color: var(--navy-soft);
+      margin-bottom: 10px;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .skills-columns li::before,
+    .contributions li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--navy);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      nav { padding: 20px 24px; }
+      .back-link { margin: 0 24px; }
+      .page-header { padding: 24px 24px 8px; }
+
+      .project-hero {
+        flex-direction: column;
+        padding: 24px 24px 32px;
+        gap: 32px;
+      }
+
+      .project-hero-photo img { width: 100%; }
+
+      .project-details {
+        flex-direction: column;
+        padding: 16px 24px 60px;
+        gap: 32px;
+      }
+
+      .skills-columns { flex-direction: column; gap: 4px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About me</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="creative.html">Creative Corner</a></li>
+    </ul>
+
+    <div class="nav-icons">
+      <a href="https://www.linkedin.com/in/quiniecui/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452H17.21v-5.569c0-1.327-.024-3.037-1.851-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.988V9h3.104v1.561h.044c.432-.82 1.487-1.684 3.059-1.684 3.27 0 3.873 2.152 3.873 4.95v6.625zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.604 13.019H3.733V9h3.208v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/qcui68" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <a class="back-link" href="projects.html">&larr; Back to Projects</a>
+
+  <div class="page-header">
+    <h1>Autonomous Floating Garden</h1>
+  </div>
+
+  <!-- ── Overview + hero photo ── -->
+  <section class="project-hero">
+    <div class="project-hero-text">
+      <p class="label">OVERVIEW</p>
+      <p>
+        This is a fully self watering garden that can float on any fresh body of
+        water. Powered by a solar powered battery pack, this allows users to be
+        away from their gardens for long periods of time.
+      </p>
+    </div>
+
+    <div class="project-hero-photo">
+      <img src="photos/garden.png" alt="Autonomous Floating Garden on the water" />
+    </div>
+  </section>
+
+  <!-- ── Team photo + skills/contributions ── -->
+  <section class="project-details">
+    <div class="project-photo">
+      <img src="photos/gardenDAID.jpeg" alt="Team presenting the Autonomous Floating Garden poster" />
+    </div>
+
+    <div class="project-info-box">
+      <h2>KEY SKILLS</h2>
+      <div class="skills-columns">
+        <ul>
+          <li>Woodworking / Power Tools (Mitre Saw, Band Saw, Drill Press)</li>
+        </ul>
+        <ul>
+          <li>Solidworks</li>
+          <li>ESP 32</li>
+          <li>Sensor and Systems Integration</li>
+        </ul>
+      </div>
+
+      <h2>KEY CONTRIBUTIONS</h2>
+      <ul class="contributions">
+        <li>Built the prototype with plywood and sheet metal, utilizing the mitre saw, drill press, power tools, and sheet metal bender</li>
+        <li>Systems validation testing performed on the irrigation system</li>
+        <li>Systems integration and testing, ensuring structure can float and will keep the plants alive by itself</li>
+      </ul>
+    </div>
+  </section>
+
+</body>
+</html>

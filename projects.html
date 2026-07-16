@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Quinie Cui</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Averia+Serif+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Pangolin&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #efeee8;
+      --navy:      #2E4256;
+      --navy-soft: #3D4F68;
+      --muted:     #6B7280;
+      --accent:    #C8B89A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--bg);
+      color: var(--navy);
+      font-family: 'Averia Serif Libre', serif;
+      font-weight: 300;
+      font-size: 16px;
+      line-height: 1.65;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Nav (same as index.html) ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 200px;
+      gap: 30px;
+    }
+
+    nav .nav-links {
+      display: flex;
+      gap: 35px;
+      list-style: none;
+    }
+
+    nav .nav-links a {
+      text-decoration: none;
+      color: var(--navy);
+      font-size: 15px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      transition: opacity 0.2s;
+    }
+
+    nav .nav-links a:hover { opacity: 0.55; }
+
+    /* Active page highlight */
+    nav .nav-links a.active {
+      border-bottom: 2px solid var(--navy);
+      padding-bottom: 2px;
+    }
+
+    nav .nav-icons {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+
+    nav .nav-icons a {
+      color: var(--navy);
+      opacity: 0.75;
+      transition: opacity 0.2s;
+    }
+
+    nav .nav-icons a:hover { opacity: 1; }
+    nav .nav-icons svg { width: 22px; height: 22px; }
+
+    /* ── Page header ── */
+    .page-header {
+      padding: 48px 200px 32px;
+    }
+
+    .page-header h1 {
+      font-family: 'Pangolin', cursive;
+      font-size: clamp(36px, 4vw, 52px);
+      font-weight: 400;
+      color: var(--navy);
+    }
+
+    /* ── Projects grid ── */
+    .projects-grid {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 40px 80px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 480px));
+  gap: 48px 200px;
+}
+
+    /* ── Each project card ── */
+    .project-card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      background-color: #ddd; /* placeholder color if image missing */
+      transition: opacity 0.2s;
+    }
+
+    .project-card:hover img { opacity: 0.85; }
+
+    .project-card .project-title {
+      font-family: 'Averia Serif Libre', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .project-card .project-desc {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .project-card .project-tags {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--navy-soft);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      nav { padding: 20px 24px; }
+      .page-header { padding: 32px 24px 20px; }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        padding: 16px 24px 60px;
+        gap: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Nav ── -->
+  <nav>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About me</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="experiences.html">Experiences</a></li>
+      <li><a href="creative.html">Creative Corner</a></li>
+    </ul>
+
+    <div class="nav-icons">
+      <a href="https://www.linkedin.com/in/quiniecui/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452H17.21v-5.569c0-1.327-.024-3.037-1.851-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.988V9h3.104v1.561h.044c.432-.82 1.487-1.684 3.059-1.684 3.27 0 3.873 2.152 3.873 4.95v6.625zM5.337 7.433a1.8 1.8 0 1 1 0-3.6 1.8 1.8 0 0 1 0 3.6zm1.604 13.019H3.733V9h3.208v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="https://github.com/qcui68" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── Page title ── -->
+  <div class="page-header">
+    <h1>Projects</h1>
+  </div>
+
+  <!-- ── Projects grid ── -->
+  <main class="projects-grid">
+
+    <!-- Project 1 -->
+    <a class="project-card" href="puck-em-back.html">
+      <img src="photos/airhockey.jpeg" alt="Puck 'em Back project" />
+      <p class="project-title">Puck 'em Back</p>
+      <p class="project-desc">Air hockey based arcade game inspired by Plants vs. Zombies.</p>
+      <p class="project-tags">Arduino, Circuit Design</p>
+    </a>
+
+    <!-- Project 2 -->
+    <a class="project-card" href="floating-garden.html">
+      <img src="photos/garden.png" alt="Autonomous Floating Garden project" />
+      <p class="project-title">Autonomous Floating Garden</p>
+      <p class="project-desc">Self-watering garden that floats in your backyard.</p>
+      <p class="project-tags">CAD, Woodworking, ESP 32</p>
+    </a>
+
+    <!-- Project 3 -->
+    <a class="project-card" href="#">
+      <img src="photos/robot.jpeg" alt="Autonomous Line Following Robot project" />
+      <p class="project-title">Autonomous Line Following Robot</p>
+      <p class="project-desc">IR sensor based line following robot.</p>
+      <p class="project-tags">CAD, Soldering, ESP 32</p>
+    </a>
+
+    <!-- Add more projects by copying a project-card block above -->
+
+  </main>
+
+</body>
+</html>
