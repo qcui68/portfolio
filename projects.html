@@ -18,6 +18,7 @@
       --navy-soft: #3D4F68;
       --muted:     #6B7280;
       --accent:    #C8B89A;
+      --card-bg:   #F7F6F1;
     }
 
     html { scroll-behavior: smooth; }
@@ -39,7 +40,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 200px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 28px 260px;
       gap: 30px;
     }
 
@@ -83,7 +87,10 @@
 
     /* ── Page header ── */
     .page-header {
-      padding: 48px 200px 32px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 48px 260px 32px;
     }
 
     .page-header h1 {
@@ -93,66 +100,189 @@
       color: var(--navy);
     }
 
-    /* ── Projects grid ── */
-    .projects-grid {
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 24px 40px 80px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 480px));
-  gap: 48px 200px;
-}
-
-    /* ── Each project card ── */
-    .project-card {
+    /* ── Projects list ── */
+    .projects-list {
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 260px 80px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      cursor: pointer;
-      text-decoration: none;
-      color: inherit;
+      gap: 24px;
     }
 
-    .project-card img {
-      width: 100%;
-      aspect-ratio: 4 / 3;
-      object-fit: cover;
-      border-radius: 12px;
-      display: block;
-      background-color: #ddd; /* placeholder color if image missing */
-      transition: opacity 0.2s;
+    .proj-card {
+      position: relative;
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 28px 32px;
     }
 
-    .project-card:hover img { opacity: 0.85; }
+    .proj-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
 
-    .project-card .project-title {
-      font-family: 'Averia Serif Libre', serif;
-      font-size: 18px;
+    .proj-title {
+      font-family: 'Pangolin', cursive;
+      font-size: 22px;
       font-weight: 700;
+      color: var(--navy);
+      /* Pangolin only ships one weight, so font-weight alone does nothing —
+         this shadow trick fakes a touch of extra stroke thickness. */
+      text-shadow: 0.2px 0 currentColor, -0.2px 0 currentColor;
+    }
+
+    .proj-tags {
+      font-family: 'Pangolin', cursive;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* ── Photos (left) + overview/skills (right) ── */
+    .proj-overview-block {
+      margin-top: 20px;
+    }
+
+    .proj-label {
+      font-family: 'Pangolin', cursive;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .proj-overview {
+      font-size: 15px;
+      color: var(--navy);
+      line-height: 1.7;
+    }
+
+    .proj-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .proj-media-col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .proj-media-col img,
+    .proj-media-col video {
+      width: 100%;
+      height: auto;
+      flex-shrink: 0;
+      border-radius: 8px;
+      display: block;
+      box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
+    }
+
+    .proj-media-col video { background-color: #d9d7cd; }
+
+    .proj-media-col.fill {
+      overflow: hidden;
+    }
+
+    .proj-media-col.fill img,
+    .proj-media-col.fill video {
+      height: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+
+    .proj-media-col::-webkit-scrollbar { width: 6px; }
+    .proj-media-col::-webkit-scrollbar-track { background: transparent; }
+    .proj-media-col::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 3px;
+    }
+
+    .proj-info-box {
+      flex: 0 0 600px;
+      border-radius: 10px;
+      padding: 28px;
+    }
+
+    .proj-info-box h4 {
+      font-family: 'Pangolin', cursive;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .proj-info-box h4:not(:first-child) {
+      margin-top: 24px;
+    }
+
+    .skills-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+    }
+
+    .skills-columns ul,
+    .contributions {
+      list-style: none;
+    }
+
+    .skills-columns li,
+    .contributions li {
+      font-size: 15px;
+      color: var(--navy);
+      margin-bottom: 10px;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.5;
+    }
+
+    .skills-columns li::before,
+    .contributions li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
       color: var(--navy);
     }
 
-    .project-card .project-desc {
-      font-size: 14px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .project-card .project-tags {
-      font-size: 14px;
-      font-weight: 700;
-      color: var(--navy-soft);
-    }
-
     /* ── Responsive ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .page-header { padding: 32px 24px 20px; }
-      .projects-grid {
-        grid-template-columns: 1fr;
-        padding: 16px 24px 60px;
-        gap: 40px;
+
+      .projects-list {
+        padding: 0 24px 60px;
       }
+
+      .proj-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .proj-body {
+        flex-direction: column;
+      }
+
+      .proj-media-col {
+        flex: 0 0 auto;
+        width: 100%;
+      }
+
+      .skills-columns { flex-direction: column; gap: 4px; }
     }
   </style>
 </head>
@@ -162,7 +292,7 @@
   <nav>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About me</a></li>
+      <li><a href="about.html">About Me</a></li>
       <li><a href="projects.html" class="active">Projects</a></li>
       <li><a href="experiences.html">Experiences</a></li>
       <li><a href="creative.html">Creative Corner</a></li>
@@ -183,36 +313,173 @@
     <h1>Projects</h1>
   </div>
 
-  <!-- ── Projects grid ── -->
-  <main class="projects-grid">
+  <!-- ── Projects list ── -->
+  <main class="projects-list">
 
-    <!-- Project 1 -->
-    <a class="project-card" href="puck-em-back.html">
-      <img src="photos/airhockey.jpeg" alt="Puck 'em Back project" />
-      <p class="project-title">Puck 'em Back</p>
-      <p class="project-desc">Air hockey based arcade game inspired by Plants vs. Zombies.</p>
-      <p class="project-tags">Arduino, Circuit Design</p>
-    </a>
+    <!-- Puck 'em Back -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3 class="proj-title">Puck 'em Back</h3>
+        <p class="proj-tags">Sep 2025 - Apr 2026</p>
+      </div>
 
-    <!-- Project 2 -->
-    <a class="project-card" href="floating-garden.html">
-      <img src="photos/garden.png" alt="Autonomous Floating Garden project" />
-      <p class="project-title">Autonomous Floating Garden</p>
-      <p class="project-desc">Self-watering garden that floats in your backyard.</p>
-      <p class="project-tags">CAD, Woodworking, ESP 32</p>
-    </a>
+      <div class="proj-overview-block">
+        <p class="proj-label">OVERVIEW</p>
+        <p class="proj-overview">
+          Puck 'em Back is an arcade game inspired by Plants vs. Zombies based off of
+          air hockey table mechanisms. The premise of the game is for the user to use
+          the hockey puck to hit the zombies and prevent them from crossing the red
+          line. Once a zombie crosses the red line, they've invaded and you're out.
+        </p>
+      </div>
 
-    <!-- Project 3 -->
-    <a class="project-card" href="line-following-robot.html">
-      <img src="photos/robot.jpeg" alt="Autonomous Line Following Robot project" />
-      <p class="project-title">Autonomous Line Following Robot</p>
-      <p class="project-desc">IR sensor based line following robot.</p>
-      <p class="project-tags">CAD, Soldering, ESP 32</p>
-    </a>
+      <div class="proj-body">
+        <div class="proj-media-col">
+          <img src="photos/airhockey.jpeg" alt="Puck 'em Back arcade game" />
+          <img src="photos/arcade-components.png" alt="Labeled diagram of Puck 'em Back table" />
+          <video controls poster="photos/airhockey.jpeg">
+            <source src="photos/puck-em-back-demo.mp4" type="video/mp4">
+            Your browser doesn't support embedded video.
+          </video>
+          <img src="photos/puck-em-back-7-seg.jpeg" alt="Puck 'em Back 7 segment display" />
+        </div>
 
-    <!-- Add more projects by copying a project-card block above -->
+        <div class="proj-info-box" style="background-color:#E7CFAE;">
+          <h4>KEY SKILLS</h4>
+          <div class="skills-columns">
+            <ul>
+              <li>Circuit Design</li>
+              <li>Soldering</li>
+            </ul>
+            <ul>
+              <li>Arduino</li>
+              <li>C++</li>
+            </ul>
+            <ul>
+              <li>Systems Integration</li>
+            </ul>
+          </div>
+
+          <h4>KEY CONTRIBUTIONS</h4>
+          <ul class="contributions">
+            <li>Designed and painted the scoreboard layout</li>
+            <li>Designed and soldered the electrical circuit for the timer and scoring display using shift registers, Arduino, and 7 segment displays</li>
+            <li>Final systems integration, integrating the mechanical motors with timer and hit detection and audio</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Autonomous Floating Garden -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3 class="proj-title">Autonomous Floating Garden</h3>
+        <p class="proj-tags">Jan 2025 - Apr 2025</p>
+      </div>
+
+      <div class="proj-overview-block">
+        <p class="proj-label">OVERVIEW</p>
+        <p class="proj-overview">
+          This is a fully self watering garden that can float on any fresh body of
+          water. Powered by a solar powered battery pack, this allows users to be
+          away from their gardens for long periods of time.
+        </p>
+      </div>
+
+      <div class="proj-body">
+        <div class="proj-media-col">
+          <img src="photos/garden.png" alt="Autonomous Floating Garden on the water" />
+          <img src="photos/garden-team.jpeg" alt="Team presenting the Autonomous Floating Garden poster" />
+        </div>
+
+        <div class="proj-info-box" style="background-color:#D6DCC7;">
+          <h4>KEY SKILLS</h4>
+          <div class="skills-columns">
+            <ul>
+              <li>Woodworking / Power Tools (Mitre Saw, Band Saw, Drill Press)</li>
+            </ul>
+            <ul>
+              <li>SolidWorks</li>
+              <li>ESP 32</li>
+              <li>Sensor and Systems Integration</li>
+            </ul>
+          </div>
+
+          <h4>KEY CONTRIBUTIONS</h4>
+          <ul class="contributions">
+            <li>Built the prototype with plywood and sheet metal, utilizing the mitre saw, drill press, power tools, and sheet metal bender</li>
+            <li>Systems validation testing performed on the irrigation system</li>
+            <li>Systems integration and testing, ensuring structure can float and will keep the plants alive by itself</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Autonomous Line Following Robot -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <h3 class="proj-title">Autonomous Line Following Robot</h3>
+        <p class="proj-tags">Sep 2024 - Jan 2025</p>
+      </div>
+
+      <div class="proj-overview-block">
+        <p class="proj-label">OVERVIEW</p>
+        <p class="proj-overview">
+          This is a fully autonomous line-following robot made with using IR sensors
+          and controlled by an ESP 32.
+        </p>
+      </div>
+
+      <div class="proj-body">
+        <div class="proj-media-col fill">
+          <img src="photos/robot.jpeg" alt="Autonomous Line Following Robot" />
+        </div>
+
+        <div class="proj-info-box" style="background-color:rgba(66,125,185,0.45);">
+          <h4>KEY SKILLS</h4>
+          <div class="skills-columns">
+            <ul>
+              <li>SolidWorks</li>
+            </ul>
+            <ul>
+              <li>ESP 32</li>
+            </ul>
+            <ul>
+              <li>IR sensor integration</li>
+            </ul>
+          </div>
+
+          <h4>KEY CONTRIBUTIONS</h4>
+          <ul class="contributions">
+            <li>Designed and iterated multiple prototypes using SolidWorks to create an IR sensor bracket through 3D printing that ensured optimal line detection performance</li>
+            <li>Soldered PCB components to connect the IR sensors with the ESP 32 board, ensuring seamless circuit integration</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Add more projects by copying a proj-card block above -->
 
   </main>
+
+  <script>
+    function syncMediaHeights() {
+      const isStacked = window.matchMedia('(max-width: 900px)').matches;
+      document.querySelectorAll('.proj-body').forEach(body => {
+        const media = body.querySelector('.proj-media-col');
+        const infoBox = body.querySelector('.proj-info-box');
+        if (!media || !infoBox) return;
+        const height = isStacked ? '' : infoBox.offsetHeight + 'px';
+        if (media.classList.contains('fill')) {
+          media.style.height = height;
+        } else {
+          media.style.maxHeight = height;
+        }
+      });
+    }
+    window.addEventListener('load', syncMediaHeights);
+    window.addEventListener('resize', syncMediaHeights);
+  </script>
 
 </body>
 </html>

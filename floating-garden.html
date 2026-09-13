@@ -40,7 +40,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 200px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 28px 260px;
       gap: 30px;
     }
 
@@ -83,9 +86,11 @@
 
     /* ── Back link ── */
     .back-link {
-      display: inline-block;
-      width: fit-content;
-      margin: 0 200px;
+      display: block;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 260px;
       font-size: 14px;
       color: var(--navy-soft);
       text-decoration: none;
@@ -97,7 +102,10 @@
 
     /* ── Page header ── */
     .page-header {
-      padding: 24px 200px 8px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 24px 260px 8px;
     }
 
     .page-header h1 {
@@ -110,10 +118,13 @@
     /* ── Hero: overview + photo ── */
     .project-hero {
       display: flex;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
       align-items: flex-start;
       justify-content: space-between;
       gap: 60px;
-      padding: 24px 200px 48px;
+      padding: 24px 260px 48px;
     }
 
     .project-hero-text {
@@ -149,10 +160,13 @@
     /* ── Details: team photo + info box ── */
     .project-details {
       display: flex;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
       align-items: flex-start;
       justify-content: space-between;
       gap: 60px;
-      padding: 32px 200px 96px;
+      padding: 32px 260px 96px;
       flex-wrap: wrap;
     }
 
@@ -220,7 +234,7 @@
     /* ── Responsive ── */
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
-      .back-link { margin: 0 24px; }
+      .back-link { padding: 0 24px; }
       .page-header { padding: 24px 24px 8px; }
 
       .project-hero {
@@ -247,7 +261,7 @@
   <nav>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About me</a></li>
+      <li><a href="about.html">About Me</a></li>
       <li><a href="projects.html" class="active">Projects</a></li>
       <li><a href="experiences.html">Experiences</a></li>
       <li><a href="creative.html">Creative Corner</a></li>
@@ -288,7 +302,7 @@
   <!-- ── Team photo + skills/contributions ── -->
   <section class="project-details">
     <div class="project-photo">
-      <img src="photos/gardenDAID.jpeg" alt="Team presenting the Autonomous Floating Garden poster" />
+      <img src="photos/garden-team.jpeg" alt="Team presenting the Autonomous Floating Garden poster" />
     </div>
 
     <div class="project-info-box">

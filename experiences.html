@@ -41,7 +41,10 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 28px 200px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 28px 260px;
       gap: 30px;
     }
 
@@ -84,7 +87,10 @@
 
     /* ── Page header ── */
     .page-header {
-      padding: 48px 200px 32px;
+      width: 100%;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 48px 260px 32px;
     }
 
     .page-header h1 {
@@ -96,10 +102,10 @@
 
     /* ── Experiences list ── */
     .experiences-list {
-      max-width: 1400px;
-      margin: 0 auto;
       width: 100%;
-      padding: 0 200px 80px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 0 260px 80px;
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -123,15 +129,18 @@
     .exp-role {
       font-family: 'Pangolin', cursive;
       font-size: 20px;
-      font-weight: 400;
-      color: #000;
+      font-weight: 700;
+      color: var(--navy);
+      /* Pangolin only ships one weight, so font-weight alone does nothing —
+         this shadow trick fakes a touch of extra stroke thickness. */
+      text-shadow: 0.2px 0 currentColor, -0.2px 0 currentColor;
     }
 
     .exp-dates {
       font-family: 'Pangolin', cursive;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 400;
-      color: #000;
+      color: var(--navy);
       white-space: nowrap;
     }
 
@@ -149,27 +158,14 @@
       max-width: 900px;
     }
 
-    /* ── Hover-expand panels ──
-       NOTE: reveal is hover-only, so this content is unreachable on touch
-       devices (no hover) and via keyboard. Needs a tap/focus toggle fallback
-       before this is considered accessible. */
+    /* ── Expand panels (always visible) ── */
     .exp-expand {
-      max-height: 0;
-      opacity: 0;
-      overflow: hidden;
-      margin-top: 0;
-      transition: max-height 0.4s ease, opacity 0.3s ease, margin-top 0.4s ease;
-    }
-
-    .exp-card.expandable:hover .exp-expand {
-      max-height: 380px;
-      opacity: 1;
       margin-top: 20px;
     }
 
     .exp-expand-text {
       font-size: 15px;
-      color: #000;
+      color: var(--navy);
       line-height: 1.7;
       max-width: 900px;
       margin-bottom: 16px;
@@ -180,6 +176,10 @@
       gap: 16px;
       overflow-x: auto;
       padding-bottom: 10px;
+    }
+
+    .exp-expand-list + .exp-photo-scroll {
+      margin-top: 16px;
     }
 
     .exp-photo-scroll img {
@@ -205,7 +205,7 @@
 
     .exp-expand-list li {
       font-size: 15px;
-      color: #000;
+      color: var(--navy);
       line-height: 1.7;
       margin-bottom: 10px;
       padding-left: 18px;
@@ -216,7 +216,7 @@
       content: "•";
       position: absolute;
       left: 0;
-      color: #000;
+      color: var(--navy);
     }
 
     .exp-expand-list li:last-child { margin-bottom: 0; }
@@ -244,7 +244,7 @@
   <nav>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About me</a></li>
+      <li><a href="about.html">About Me</a></li>
       <li><a href="projects.html">Projects</a></li>
       <li><a href="experiences.html" class="active">Experiences</a></li>
       <li><a href="creative.html">Creative Corner</a></li>
@@ -268,7 +268,7 @@
   <!-- ── Experiences list ── -->
   <main class="experiences-list">
 
-    <div class="exp-card expandable">
+    <div class="exp-card">
       <div class="exp-header">
         <h3 class="exp-role">Mechatronics Engineering Co-op</h3>
         <p class="exp-dates">May 2026 - Present</p>
@@ -287,10 +287,20 @@
           <li>Utilized Python to visualize and analyze particle sensor data, generating graphs to evaluate system separation efficiency for particles smaller than 10 microns</li>
           <li>Designed and soldered a custom protoboard circuit for externally firing laser setup for LIBS Laser Induced Breakdown Spectroscopy</li>
         </ul>
+        <div class="exp-photo-scroll">
+          <img src="photos/mistywest/ten-cyclones-setup.jpeg" alt="Ten cyclone setup for the particle separation system" />
+          <img src="photos/mistywest/single-cyclone-setup.jpeg" alt="Single cyclone setup" />
+          <img src="photos/mistywest/close-up-of-cyclone-electronics.jpeg" alt="Close up of cyclone electronics" />
+          <img src="photos/mistywest/thermal-testing-set-up.jpeg" alt="Thermal testing set up" />
+          <img src="photos/mistywest/libs-circuit.jpeg" alt="Custom protoboard circuit for the LIBS laser setup" />
+          <img src="photos/mistywest/new-libs-circuit.jpeg" alt="Updated LIBS circuit" />
+          <img src="photos/mistywest/new-libs-setup.jpeg" alt="Updated LIBS laser setup" />
+          <img src="photos/mistywest/test-samples.jpeg" alt="Test samples" />
+        </div>
       </div>
     </div>
 
-    <div class="exp-card expandable">
+    <div class="exp-card">
       <div class="exp-header">
         <h3 class="exp-role">Project Assistant</h3>
         <p class="exp-dates">May 2025 - Dec 2025</p>
@@ -313,7 +323,7 @@
       </div>
     </div>
 
-    <div class="exp-card expandable">
+    <div class="exp-card">
       <div class="exp-header">
         <h3 class="exp-role">Artist Educator</h3>
         <p class="exp-dates">Jun 2024 - Aug 2024</p>
@@ -333,9 +343,12 @@
           second life. Here are some things that they've created!
         </p>
         <div class="exp-photo-scroll">
-          <img src="photos/artist-craft-1.jpg" alt="Fabric bear cutouts made by students" />
-          <img src="photos/artist-craft-2.jpg" alt="Fabric drawings made by students" />
-          <img src="photos/artist-craft-3.jpg" alt="Stuffed animal craft made by a student" />
+          <img src="photos/hamilton-conservatory-of-the-arts/IMG_1117.jpeg" alt="Craft made by a student at Hamilton Conservatory for the Arts" />
+          <img src="photos/hamilton-conservatory-of-the-arts/IMG_1401.jpeg" alt="Craft made by a student at Hamilton Conservatory for the Arts" />
+          <img src="photos/hamilton-conservatory-of-the-arts/IMG_1417.jpeg" alt="Craft made by a student at Hamilton Conservatory for the Arts" />
+          <img src="photos/hamilton-conservatory-of-the-arts/IMG_2499.jpeg" alt="Craft made by a student at Hamilton Conservatory for the Arts" />
+          <img src="photos/hamilton-conservatory-of-the-arts/IMG_2697.jpeg" alt="Craft made by a student at Hamilton Conservatory for the Arts" />
+          <img src="photos/hamilton-conservatory-of-the-arts/badges.jpeg" alt="Badges made by students at Hamilton Conservatory for the Arts" />
         </div>
       </div>
     </div>
