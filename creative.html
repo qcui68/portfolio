@@ -83,42 +83,50 @@
     nav .nav-icons a:hover { opacity: 1; }
     nav .nav-icons svg { width: 22px; height: 22px; }
 
-    /* ── Page header ── */
-    .page-header {
+    /* ── Hero: the desk is zoomed in edge to edge, with the heading on the wall ── */
+    .desk-hero {
+      position: relative;
       width: 100%;
-      max-width: 1600px;
+      max-width: 2000px;
       margin: 0 auto;
-      padding: 48px 260px 32px;
+      container-type: inline-size;
     }
 
-    .page-header h1 {
+    .desk-heading {
+      position: absolute;
+      z-index: 3;
+      left: max(260px, calc(50% - 540px));
+      top: calc(40px + 2cqw);
+      pointer-events: none;
+    }
+
+    .desk-heading h1 {
       font-family: 'Pangolin', cursive;
       font-size: clamp(36px, 4vw, 52px);
       font-weight: 400;
       color: var(--navy);
     }
 
-    /* ── Placeholder content ── */
-    .page-body {
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
-      padding: 0 260px 80px;
-    }
-
-    .page-body p {
+    .desk-heading p {
       font-size: 15px;
       color: var(--navy-soft);
-      max-width: 620px;
+      max-width: min(620px, 42cqw);
       line-height: 1.7;
-      margin-bottom: 28px;
+      margin-top: 12px;
+    }
+
+    /* Crops the zoomed desk to the tabletop (the front edge and legs are cut off). */
+    .desk-crop {
+      position: relative;
+      overflow: hidden;
+      margin-top: 40px;
+      aspect-ratio: 1 / 0.627;
     }
 
     .desk-scene {
       position: relative;
-      width: 100%;
-      max-width: 900px;
-      margin: 24px auto 0;
+      width: 103%;
+      margin-left: -1.5%;
     }
 
     .desk-illustration {
@@ -171,10 +179,19 @@
     }
 
     /* ── Responsive ── */
+    @media (max-width: 1439px) {
+      .desk-heading {
+        position: static;
+        padding: 32px 260px 0;
+        pointer-events: auto;
+      }
+      .desk-heading p { max-width: 620px; }
+      .desk-crop { margin-top: 24px; }
+    }
+
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
-      .page-header { padding: 32px 24px 20px; }
-      .page-body { padding: 0 24px 60px; }
+      .desk-heading { padding: 24px 24px 0; }
     }
   </style>
 </head>
@@ -200,37 +217,38 @@
     </div>
   </nav>
 
-  <!-- ── Page title ── -->
-  <div class="page-header">
-    <h1>Creative Corner</h1>
-  </div>
+  <!-- ── Hero: heading over the zoomed-in desk ── -->
+  <main class="desk-hero">
+    <div class="desk-heading">
+      <h1>Creative Corner</h1>
+      <p>This is usually what my desk looks like when I'm not doing engineering. Feel free to click around and see what I'm up to!</p>
+    </div>
 
-  <!-- ── Content ── -->
-  <main class="page-body">
-    <p>A few of the creative things I get up to outside of engineering.</p>
-    <div class="desk-scene">
-      <img class="desk-illustration" src="photos/creative-corner/desk.png" alt="Illustration of a cozy creative desk with books, yarn, a journal, pens, a lamp and flowers" />
+    <div class="desk-crop">
+      <div class="desk-scene">
+        <img class="desk-illustration" src="photos/creative-corner/desk.png" alt="Illustration of a cozy creative desk with books, yarn, a journal, pens, a lamp and flowers" />
 
-      <!-- Sketchbook on the shelf → Drawings -->
-      <a class="desk-link" href="drawings.html" aria-label="View Drawings" title="View Drawings"
-         style="--x:19.29%; --y:20.82%; --w:2.874%; --ar:240 / 705;
-                --hit:polygon(0.4% 24.7%, 4.2% 21.6%, 58.8% 3.8%, 84.6% 0.6%, 96.7% 6.2%, 99.6% 13.2%, 99.6% 86.5%, 73.3% 98.9%, 5.4% 99.6%, 3.3% 95.9%);"></a>
-      <img class="desk-item" src="photos/creative-corner/desk-sketchbook.png" alt=""
-         style="--x:19.29%; --y:20.82%; --w:2.874%; --ar:240 / 705; --rest-clip:inset(0 5.95% 0 0);" />
+        <!-- Sketchbook on the shelf → Drawings -->
+        <a class="desk-link" href="drawings.html" aria-label="View Drawings" title="View Drawings"
+           style="--x:18.393%; --y:19.878%; --w:2.962%; --ar:240 / 705;
+                  --hit:polygon(0.4% 24.7%, 4.2% 21.6%, 58.8% 3.8%, 84.6% 0.6%, 96.7% 6.2%, 99.6% 13.2%, 99.6% 86.5%, 73.3% 98.9%, 5.4% 99.6%, 3.3% 95.9%);"></a>
+        <img class="desk-item" src="photos/creative-corner/desk-sketchbook.png" alt=""
+           style="--x:18.393%; --y:19.878%; --w:2.962%; --ar:240 / 705; --rest-clip:inset(0 5.95% 0 0);" />
 
-      <!-- Yarn + pouch → Crochet -->
-      <a class="desk-link" href="crochet.html" aria-label="View Crochet" title="View Crochet"
-         style="--x:10.351%; --y:38.32%; --w:10.669%; --ar:640 / 705;
-                --hit:polygon(79.8% 0%, 79.8% 1.7%, 75.5% 4.7%, 72.8% 8.5%, 62% 9.9%, 52.3% 16.2%, 47.5% 24.8%, 47.3% 35%, 21.1% 35.3%, 20.2% 37%, 22.7% 40.1%, 22.7% 43.5%, 20.9% 45.8%, 6.4% 46%, 4.5% 47.1%, 6.2% 59.3%, 1.2% 68.8%, 1.4% 77.2%, 0% 80.4%, 3.3% 94.3%, 8.6% 96.5%, 9.7% 99.9%, 57.3% 99.9%, 58.6% 97.4%, 71.1% 96.6%, 85.3% 93.5%, 92.3% 89.6%, 92.2% 84.4%, 89.7% 81%, 89.2% 73.8%, 86.7% 70.2%, 83.8% 48.2%, 80.5% 47%, 80.5% 43.5%, 84.5% 40.7%, 87.8% 35.3%, 88.6% 24.5%, 94.4% 23.3%, 99.1% 17.9%, 99.8% 9.8%, 96.1% 4.4%, 92.2% 1.7%, 92.2% 0%);"></a>
-      <img class="desk-item" src="photos/creative-corner/desk-crochet.png" alt=""
-         style="--x:10.351%; --y:38.32%; --w:10.669%; --ar:640 / 705;" />
+        <!-- Yarn + pouch → Crochet -->
+        <a class="desk-link" href="crochet.html" aria-label="View Crochet" title="View Crochet"
+           style="--x:9.197%; --y:37.973%; --w:10.873%; --ar:640 / 705;
+                  --hit:polygon(79.8% 0%, 79.8% 1.7%, 75.5% 4.7%, 72.8% 8.5%, 62% 9.9%, 52.3% 16.2%, 47.5% 24.8%, 47.3% 35%, 21.1% 35.3%, 20.2% 37%, 22.7% 40.1%, 22.7% 43.5%, 20.9% 45.8%, 6.4% 46%, 4.5% 47.1%, 6.2% 59.3%, 1.2% 68.8%, 1.4% 77.2%, 0% 80.4%, 3.3% 94.3%, 8.6% 96.5%, 9.7% 99.9%, 57.3% 99.9%, 58.6% 97.4%, 71.1% 96.6%, 85.3% 93.5%, 92.3% 89.6%, 92.2% 84.4%, 89.7% 81%, 89.2% 73.8%, 86.7% 70.2%, 83.8% 48.2%, 80.5% 47%, 80.5% 43.5%, 84.5% 40.7%, 87.8% 35.3%, 88.6% 24.5%, 94.4% 23.3%, 99.1% 17.9%, 99.8% 9.8%, 96.1% 4.4%, 92.2% 1.7%, 92.2% 0%);"></a>
+        <img class="desk-item" src="photos/creative-corner/desk-crochet.png" alt=""
+           style="--x:9.197%; --y:37.973%; --w:10.873%; --ar:640 / 705;" />
 
-      <!-- Open journal → Bullet Journal -->
-      <a class="desk-link" href="bullet-journal.html" aria-label="View Bullet Journal" title="View Bullet Journal"
-         style="--x:31.7%; --y:45.9%; --w:21.5%; --ar:640 / 423;
-                --hit:polygon(0.9% 12.3%, 14.1% 8.3%, 52.3% 0.2%, 54.5% 0%, 85% 2.4%, 91.4% 33.8%, 99.8% 77.5%, 98.8% 83%, 59.5% 99.8%, 13.8% 97.2%, 11.7% 88.7%, 0% 14.7%);"></a>
-      <img class="desk-item" src="photos/creative-corner/desk-journal.png" alt=""
-         style="--x:31.7%; --y:45.9%; --w:21.5%; --ar:640 / 423;" />
+        <!-- Open journal → Bullet Journal -->
+        <a class="desk-link" href="bullet-journal.html" aria-label="View Bullet Journal" title="View Bullet Journal"
+           style="--x:31.317%; --y:45.768%; --w:21.870%; --ar:640 / 423;
+                  --hit:polygon(0.9% 12.3%, 14.1% 8.3%, 52.3% 0.2%, 54.5% 0%, 85% 2.4%, 91.4% 33.8%, 99.8% 77.5%, 98.8% 83%, 59.5% 99.8%, 13.8% 97.2%, 11.7% 88.7%, 0% 14.7%);"></a>
+        <img class="desk-item" src="photos/creative-corner/desk-journal.png" alt=""
+           style="--x:31.317%; --y:45.768%; --w:21.870%; --ar:640 / 423;" />
+      </div>
     </div>
   </main>
 
