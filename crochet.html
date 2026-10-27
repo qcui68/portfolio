@@ -114,23 +114,43 @@
       color: var(--navy);
     }
 
-    /* ── Gallery ── */
+    /* ── Crochet board: pieces are scattered across the page ── */
     .gallery {
       width: 100%;
       max-width: 1600px;
       margin: 0 auto;
       padding: 0 260px 80px;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
     }
 
-    .gallery img {
+    .crochet-board {
+      position: relative;
+      container-type: inline-size;
+      aspect-ratio: 777 / 1500;
+    }
+
+    .crochet-item {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: var(--w);
+      text-align: center;
+    }
+
+    .crochet-item img {
+      display: block;
       width: 100%;
       height: auto;
-      border-radius: 8px;
-      display: block;
-      box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
+    }
+
+    /* Photos shot on a white background: the white blends into the page */
+    .crochet-item img.blend { mix-blend-mode: multiply; }
+
+    .crochet-item figcaption {
+      margin: 0.8em -50% 0;
+      white-space: nowrap;
+      font-size: clamp(11px, 1.5cqw, 15px);
+      line-height: 1.3;
+      color: var(--navy);
     }
 
     /* ── Responsive ── */
@@ -139,6 +159,16 @@
       .back-link { padding: 0 24px; }
       .page-header { padding: 24px 24px 20px; }
       .gallery { padding: 0 24px 60px; }
+      .crochet-board {
+        aspect-ratio: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px 24px;
+        align-items: end;
+      }
+      .crochet-item { position: static; width: auto; }
+      .crochet-item figcaption { margin: 0.8em 0 0; white-space: normal; }
+      .crochet-item img { max-width: 220px; margin: 0 auto; }
     }
   </style>
 </head>
@@ -170,23 +200,60 @@
     <h1>Crochet</h1>
   </div>
 
-  <!-- ── Gallery ── -->
+  <!-- ── Crochet board ── -->
   <main class="gallery">
-    <img src="photos/creative-corner/crochet/crochet-flowers-bouquet.jpeg" alt="Crochet flower bouquet in a bottle" />
-    <img src="photos/creative-corner/crochet/IMG_1505.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_3939.jpg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_3941.png" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_4057.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_4058.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_4059.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_4060.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_4061.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_7943.jpg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_9147.jpeg" alt="Crochet piece" />
-    <img src="photos/creative-corner/crochet/IMG_9433.jpeg" alt="Crochet flower bouquet in a bottle" />
-    <img src="photos/creative-corner/crochet/IMG_9524.jpeg" alt="Crochet piece" />
+    <div class="crochet-board">
+      <figure class="crochet-item" style="--x:5.41%; --y:0.67%; --w:21.88%;">
+        <img class="blend" src="photos/creative-corner/crochet/web/totoro-pouch.webp" alt="Totoro Pouch" />
+        <figcaption>Totoro Pouch</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:38.48%; --y:14.67%; --w:16.73%;">
+        <img class="blend" src="photos/creative-corner/crochet/web/mini-rustic-purse.webp" alt="Mini Rustic Purse" />
+        <figcaption>Mini Rustic Purse</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:65.25%; --y:3.47%; --w:34.75%;">
+        <img src="photos/creative-corner/crochet/web/piplup-plushie.webp" alt="Piplup Plushie" />
+        <figcaption>Piplup Plushie</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:5.41%; --y:20.33%; --w:12.87%;">
+        <img src="photos/creative-corner/crochet/web/gaspard-lisa-plushie.webp" alt="Gaspard &amp; Lisa Plushie" />
+        <figcaption>Gaspard &amp; Lisa Plushie</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:37.58%; --y:37.67%; --w:18.92%;">
+        <img src="photos/creative-corner/crochet/web/bubble-pouch.webp" alt="Bubble Pouch" />
+        <figcaption>Bubble Pouch</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:73.36%; --y:31.87%; --w:18.02%;">
+        <img src="photos/creative-corner/crochet/web/cat-keychain.webp" alt="Cat Keychain" />
+        <figcaption>Cat Keychain</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:1.16%; --y:46.53%; --w:19.05%;">
+        <img src="photos/creative-corner/crochet/web/bouquet-of-flowers.webp" alt="Bouquet of Flowers" />
+        <figcaption>Bouquet of Flowers</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:36.94%; --y:54.80%; --w:17.63%;">
+        <img src="photos/creative-corner/crochet/web/succulent.webp" alt="Succulent" />
+        <figcaption>Succulent</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:72.07%; --y:51.87%; --w:21.75%;">
+        <img class="blend" src="photos/creative-corner/crochet/web/grocery-bag.webp" alt="Grocery Bag" />
+        <figcaption>Grocery Bag</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:1.80%; --y:71.67%; --w:22.27%;">
+        <img class="blend" src="photos/creative-corner/crochet/web/checkered-hobo-bag.webp" alt="Checkered Hobo Bag" />
+        <figcaption>Checkered Hobo Bag</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:40.54%; --y:86.67%; --w:15.32%;">
+        <img src="photos/creative-corner/crochet/web/totoro-keychain.webp" alt="Totoro Keychain" />
+        <figcaption>Totoro Keychain</figcaption>
+      </figure>
+      <figure class="crochet-item" style="--x:71.30%; --y:78.53%; --w:28.06%;">
+        <img src="photos/creative-corner/crochet/web/cerberus.webp" alt="Cerberus from Cardcaptor Sakura" />
+        <figcaption>Cerberus from Cardcaptor Sakura</figcaption>
+      </figure>
 
-    <!-- Add more crochet photos by copying an <img> line above -->
+      <!-- Add more pieces by copying a <figure> above and setting its --x / --y / --w position -->
+    </div>
   </main>
 
 </body>
