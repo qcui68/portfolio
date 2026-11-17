@@ -133,7 +133,7 @@
       left: var(--x);
       top: var(--y);
       width: var(--w);
-      text-align: center;
+      text-align: left;
     }
 
     .crochet-item img {
@@ -146,7 +146,8 @@
     .crochet-item img.blend { mix-blend-mode: multiply; }
 
     .crochet-item figcaption {
-      margin: 0.8em -50% 0;
+      margin: 0.8em 0 0;
+      padding-left: var(--cx, 0%);
       white-space: nowrap;
       font-size: clamp(11px, 1.5cqw, 15px);
       line-height: 1.3;
@@ -167,7 +168,7 @@
         align-items: end;
       }
       .crochet-item { position: static; width: auto; }
-      .crochet-item figcaption { margin: 0.8em 0 0; white-space: normal; }
+      .crochet-item figcaption { padding-left: 0; white-space: normal; }
       .crochet-item img { max-width: 220px; margin: 0 auto; }
     }
   </style>
@@ -203,7 +204,7 @@
   <!-- ── Crochet board ── -->
   <main class="gallery">
     <div class="crochet-board">
-      <figure class="crochet-item" style="--x:5.41%; --y:0.67%; --w:21.88%;">
+      <figure class="crochet-item" style="--x:5.41%; --y:0.67%; --w:21.88%; --cx:9%;">
         <img class="blend" src="photos/creative-corner/crochet/web/totoro-pouch.webp" alt="Totoro Pouch" />
         <figcaption>Totoro Pouch</figcaption>
       </figure>
@@ -211,11 +212,11 @@
         <img class="blend" src="photos/creative-corner/crochet/web/mini-rustic-purse.webp" alt="Mini Rustic Purse" />
         <figcaption>Mini Rustic Purse</figcaption>
       </figure>
-      <figure class="crochet-item" style="--x:65.25%; --y:3.47%; --w:34.75%;">
+      <figure class="crochet-item" style="--x:65.25%; --y:3.47%; --w:34.75%; --cx:13%;">
         <img src="photos/creative-corner/crochet/web/piplup-plushie.webp" alt="Piplup Plushie" />
         <figcaption>Piplup Plushie</figcaption>
       </figure>
-      <figure class="crochet-item" style="--x:5.41%; --y:20.33%; --w:12.87%;">
+      <figure class="crochet-item" style="--x:5.41%; --y:20.33%; --w:12.87%; --cx:5%;">
         <img src="photos/creative-corner/crochet/web/gaspard-lisa-plushie.webp" alt="Gaspard &amp; Lisa Plushie" />
         <figcaption>Gaspard &amp; Lisa Plushie</figcaption>
       </figure>
@@ -227,11 +228,11 @@
         <img src="photos/creative-corner/crochet/web/cat-keychain.webp" alt="Cat Keychain" />
         <figcaption>Cat Keychain</figcaption>
       </figure>
-      <figure class="crochet-item" style="--x:1.16%; --y:46.53%; --w:19.05%;">
+      <figure class="crochet-item" style="--x:1.16%; --y:46.53%; --w:19.05%; --cx:30%;">
         <img src="photos/creative-corner/crochet/web/bouquet-of-flowers.webp" alt="Bouquet of Flowers" />
         <figcaption>Bouquet of Flowers</figcaption>
       </figure>
-      <figure class="crochet-item" style="--x:36.94%; --y:54.80%; --w:17.63%;">
+      <figure class="crochet-item" style="--x:36.94%; --y:54.80%; --w:17.63%; --cx:30%;">
         <img src="photos/creative-corner/crochet/web/succulent.webp" alt="Succulent" />
         <figcaption>Succulent</figcaption>
       </figure>
@@ -239,7 +240,7 @@
         <img class="blend" src="photos/creative-corner/crochet/web/grocery-bag.webp" alt="Grocery Bag" />
         <figcaption>Grocery Bag</figcaption>
       </figure>
-      <figure class="crochet-item" style="--x:1.80%; --y:71.67%; --w:22.27%;">
+      <figure class="crochet-item" style="--x:1.80%; --y:71.67%; --w:22.27%; --cx:2px;">
         <img class="blend" src="photos/creative-corner/crochet/web/checkered-hobo-bag.webp" alt="Checkered Hobo Bag" />
         <figcaption>Checkered Hobo Bag</figcaption>
       </figure>
@@ -247,7 +248,7 @@
         <img src="photos/creative-corner/crochet/web/totoro-keychain.webp" alt="Totoro Keychain" />
         <figcaption>Totoro Keychain</figcaption>
       </figure>
-      <figure class="crochet-item" style="--x:71.30%; --y:78.53%; --w:28.06%;">
+      <figure class="crochet-item" style="--x:71.30%; --y:78.53%; --w:28.06%; --cx:2%;">
         <img src="photos/creative-corner/crochet/web/cerberus.webp" alt="Cerberus from Cardcaptor Sakura" />
         <figcaption>Cerberus from Cardcaptor Sakura</figcaption>
       </figure>
