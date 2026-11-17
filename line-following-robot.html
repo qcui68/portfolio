@@ -18,7 +18,7 @@
       --navy-soft: #3D4F68;
       --muted:     #6B7280;
       --accent:    #C8B89A;
-      --box-bg:    #D6DCC7;
+      --card-bg:   #F7F6F1;
     }
 
     html { scroll-behavior: smooth; }
@@ -35,7 +35,7 @@
       flex-direction: column;
     }
 
-    /* ── Nav (shared across pages) ── */
+    /* ── Nav (same as index.html) ── */
     nav {
       display: flex;
       align-items: center;
@@ -64,6 +64,7 @@
 
     nav .nav-links a:hover { opacity: 0.55; }
 
+    /* Active page highlight */
     nav .nav-links a.active {
       border-bottom: 2px solid var(--navy);
       padding-bottom: 2px;
@@ -105,7 +106,7 @@
       width: 100%;
       max-width: 1600px;
       margin: 0 auto;
-      padding: 24px 260px 8px;
+      padding: 48px 260px 32px;
     }
 
     .page-header h1 {
@@ -115,101 +116,139 @@
       color: var(--navy);
     }
 
-    /* ── Hero: overview + photo ── */
-    .project-hero {
-      display: flex;
+    /* ── Projects list ── */
+    .projects-list {
       width: 100%;
       max-width: 1600px;
       margin: 0 auto;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 60px;
-      padding: 24px 260px 48px;
-    }
-
-    .project-hero-text {
-      max-width: 620px;
-    }
-
-    .project-hero-text .label {
-      font-family: 'Pangolin', cursive;
-      font-size: 20px;
-      font-weight: 400;
-      color: var(--navy);
-      margin-bottom: 12px;
-    }
-
-    .project-hero-text p {
-      font-size: 16px;
-      color: var(--navy-soft);
-      line-height: 1.75;
-    }
-
-    .project-hero-photo {
-      flex-shrink: 0;
-    }
-
-    .project-hero-photo img {
-      width: clamp(280px, 30vw, 420px);
-      height: auto;
-      border-radius: 8px;
-      display: block;
-      box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
-    }
-
-    /* ── Details: video + info box ── */
-    .project-details {
+      padding: 0 260px 80px;
       display: flex;
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
-      align-items: stretch;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .proj-card {
+      position: relative;
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 28px 32px;
+    }
+
+    .proj-header {
+      display: flex;
+      align-items: baseline;
       justify-content: space-between;
-      gap: 60px;
-      padding: 32px 260px 96px;
+      gap: 24px;
       flex-wrap: wrap;
     }
 
-    .project-video {
-      flex: 1 1 380px;
-      max-width: 480px;
+    .proj-title {
+      font-family: 'Pangolin', cursive;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      /* Pangolin only ships one weight, so font-weight alone does nothing —
+         this shadow trick fakes a touch of extra stroke thickness. */
+      text-shadow: 0.2px 0 currentColor, -0.2px 0 currentColor;
     }
 
-    .project-video video {
+    .proj-tags {
+      font-family: 'Pangolin', cursive;
+      font-size: 17px;
+      font-weight: 400;
+      color: var(--navy);
+      white-space: nowrap;
+    }
+
+    /* ── Photos (left) + overview/skills (right) ── */
+    .proj-overview-block {
+      margin-top: 20px;
+    }
+
+    .proj-label {
+      font-family: 'Pangolin', cursive;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+
+    .proj-overview {
+      font-size: 15px;
+      color: var(--navy);
+      line-height: 1.7;
+    }
+
+    .proj-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .proj-media-col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .proj-media-col img,
+    .proj-media-col video {
       width: 100%;
-      height: 100%;
-      min-height: 260px;
-      max-height: 480px;
-      object-fit: cover;
+      height: auto;
+      flex-shrink: 0;
       border-radius: 8px;
       display: block;
-      background-color: #d9d7cd;
       box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
     }
 
-    .project-info-box {
-      flex: 1 1 420px;
-      max-width: 620px;
-      background-color: var(--box-bg);
-      border-radius: 10px;
-      padding: 40px;
+    .proj-media-col video { background-color: #d9d7cd; }
+
+    .proj-media-col.fill {
+      overflow: hidden;
     }
 
-    .project-info-box h2 {
+    .proj-media-col.fill img,
+    .proj-media-col.fill video {
+      height: 100%;
+      object-fit: cover;
+      object-position: center 65%;
+    }
+
+    .proj-media-col::-webkit-scrollbar { width: 6px; }
+    .proj-media-col::-webkit-scrollbar-track { background: transparent; }
+    .proj-media-col::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 3px;
+    }
+
+    .proj-info-box {
+      flex: 0 0 600px;
+      border-radius: 10px;
+      padding: 28px;
+    }
+
+    .proj-info-box h4 {
       font-family: 'Pangolin', cursive;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
       color: var(--navy);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .project-info-box h2:not(:first-child) {
-      margin-top: 28px;
+    .proj-info-box h4:not(:first-child) {
+      margin-top: 24px;
     }
 
     .skills-columns {
       display: flex;
-      gap: 40px;
+      flex-wrap: wrap;
+      gap: 8px 24px;
     }
 
     .skills-columns ul,
@@ -220,7 +259,7 @@
     .skills-columns li,
     .contributions li {
       font-size: 15px;
-      color: var(--navy-soft);
+      color: var(--navy);
       margin-bottom: 10px;
       padding-left: 18px;
       position: relative;
@@ -239,20 +278,25 @@
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .back-link { padding: 0 24px; }
-      .page-header { padding: 24px 24px 8px; }
+      .page-header { padding: 24px 24px 20px; }
 
-      .project-hero {
-        flex-direction: column;
-        padding: 24px 24px 32px;
-        gap: 32px;
+      .projects-list {
+        padding: 0 24px 60px;
       }
 
-      .project-hero-photo img { width: 100%; }
-
-      .project-details {
+      .proj-header {
         flex-direction: column;
-        padding: 16px 24px 60px;
-        gap: 32px;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .proj-body {
+        flex-direction: column;
+      }
+
+      .proj-media-col {
+        flex: 0 0 auto;
+        width: 100%;
       }
 
       .skills-columns { flex-direction: column; gap: 4px; }
@@ -283,53 +327,72 @@
 
   <a class="back-link" href="projects.html">&larr; Back to Projects</a>
 
-  <div class="page-header">
-    <h1>Autonomous Line Following Robot</h1>
-  </div>
+  <!-- ── Project ── -->
+  <main class="projects-list" style="padding-top: 24px;">
 
-  <!-- ── Overview + hero photo ── -->
-  <section class="project-hero">
-    <div class="project-hero-text">
-      <p class="label">OVERVIEW</p>
-      <p>
-        This is a fully autonomous line-following robot made with using IR
-        sensors and controlled by an ESP 32.
-      </p>
-    </div>
-
-    <div class="project-hero-photo">
-      <img src="photos/robot.jpeg" alt="Autonomous Line Following Robot" />
-    </div>
-  </section>
-
-  <!-- ── Video + skills/contributions ── -->
-  <section class="project-details">
-    <div class="project-video">
-      <video controls poster="photos/robot.jpeg">
-        <source src="photos/robot-demo.mp4" type="video/mp4">
-        Your browser doesn't support embedded video.
-      </video>
-    </div>
-
-    <div class="project-info-box">
-      <h2>KEY SKILLS</h2>
-      <div class="skills-columns">
-        <ul>
-          <li>SolidWorks</li>
-          <li>ESP 32</li>
-        </ul>
-        <ul>
-          <li>IR sensor integration</li>
-        </ul>
+    <!-- Autonomous Line Following Robot -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <h1 class="proj-title">Autonomous Line Following Robot</h1>
+        <p class="proj-tags">Sep 2024 - Jan 2025</p>
       </div>
 
-      <h2>KEY CONTRIBUTIONS</h2>
-      <ul class="contributions">
-        <li>Designed and iterated multiple prototypes using SolidWorks to create an IR sensor bracket through 3D printing that ensured optimal line detection performance</li>
-        <li>Soldered PCB components to connect the IR sensors with the ESP 32 board, ensuring seamless circuit integration</li>
-      </ul>
+      <div class="proj-overview-block">
+        <p class="proj-label">OVERVIEW</p>
+        <p class="proj-overview">
+          This is a fully autonomous line-following robot made with using IR sensors
+          and controlled by an ESP 32.
+        </p>
+      </div>
+
+      <div class="proj-body">
+        <div class="proj-media-col fill">
+          <img src="photos/robot.jpeg" alt="Autonomous Line Following Robot" />
+        </div>
+
+        <div class="proj-info-box" style="background-color:rgba(66,125,185,0.45);">
+          <h4>KEY SKILLS</h4>
+          <div class="skills-columns">
+            <ul>
+              <li>SolidWorks</li>
+            </ul>
+            <ul>
+              <li>ESP 32</li>
+            </ul>
+            <ul>
+              <li>IR sensor integration</li>
+            </ul>
+          </div>
+
+          <h4>KEY CONTRIBUTIONS</h4>
+          <ul class="contributions">
+            <li>Designed and iterated multiple prototypes using SolidWorks to create an IR sensor bracket through 3D printing that ensured optimal line detection performance</li>
+            <li>Soldered PCB components to connect the IR sensors with the ESP 32 board, ensuring seamless circuit integration</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </section>
+
+  </main>
+
+  <script>
+    function syncMediaHeights() {
+      const isStacked = window.matchMedia('(max-width: 900px)').matches;
+      document.querySelectorAll('.proj-body').forEach(body => {
+        const media = body.querySelector('.proj-media-col');
+        const infoBox = body.querySelector('.proj-info-box');
+        if (!media || !infoBox) return;
+        const height = isStacked ? '' : infoBox.offsetHeight + 'px';
+        if (media.classList.contains('fill')) {
+          media.style.height = height;
+        } else {
+          media.style.maxHeight = height;
+        }
+      });
+    }
+    window.addEventListener('load', syncMediaHeights);
+    window.addEventListener('resize', syncMediaHeights);
+  </script>
 
 </body>
 </html>

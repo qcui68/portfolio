@@ -18,7 +18,7 @@
       --navy-soft: #3D4F68;
       --muted:     #6B7280;
       --accent:    #C8B89A;
-      --box-bg:    #E7CFAE;
+      --card-bg:   #F7F6F1;
     }
 
     html { scroll-behavior: smooth; }
@@ -35,7 +35,7 @@
       flex-direction: column;
     }
 
-    /* ── Nav (shared across pages) ── */
+    /* ── Nav (same as index.html) ── */
     nav {
       display: flex;
       align-items: center;
@@ -64,6 +64,7 @@
 
     nav .nav-links a:hover { opacity: 0.55; }
 
+    /* Active page highlight */
     nav .nav-links a.active {
       border-bottom: 2px solid var(--navy);
       padding-bottom: 2px;
@@ -105,7 +106,7 @@
       width: 100%;
       max-width: 1600px;
       margin: 0 auto;
-      padding: 24px 260px 8px;
+      padding: 48px 260px 32px;
     }
 
     .page-header h1 {
@@ -115,95 +116,139 @@
       color: var(--navy);
     }
 
-    /* ── Hero: overview + photo ── */
-    .project-hero {
-      display: flex;
+    /* ── Projects list ── */
+    .projects-list {
       width: 100%;
       max-width: 1600px;
       margin: 0 auto;
-      align-items: flex-start;
+      padding: 0 260px 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .proj-card {
+      position: relative;
+      background-color: var(--card-bg);
+      border-radius: 10px;
+      padding: 28px 32px;
+    }
+
+    .proj-header {
+      display: flex;
+      align-items: baseline;
       justify-content: space-between;
-      gap: 60px;
-      padding: 24px 260px 48px;
+      gap: 24px;
+      flex-wrap: wrap;
     }
 
-    .project-hero-text {
-      max-width: 620px;
-    }
-
-    .project-hero-text .label {
+    .proj-title {
       font-family: 'Pangolin', cursive;
-      font-size: 20px;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--navy);
+      /* Pangolin only ships one weight, so font-weight alone does nothing —
+         this shadow trick fakes a touch of extra stroke thickness. */
+      text-shadow: 0.2px 0 currentColor, -0.2px 0 currentColor;
+    }
+
+    .proj-tags {
+      font-family: 'Pangolin', cursive;
+      font-size: 17px;
       font-weight: 400;
       color: var(--navy);
-      margin-bottom: 12px;
+      white-space: nowrap;
     }
 
-    .project-hero-text p {
-      font-size: 16px;
-      color: var(--navy-soft);
-      line-height: 1.75;
+    /* ── Photos (left) + overview/skills (right) ── */
+    .proj-overview-block {
+      margin-top: 20px;
     }
 
-    .project-hero-photo {
-      flex-shrink: 0;
+    .proj-label {
+      font-family: 'Pangolin', cursive;
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--navy);
+      margin-bottom: 10px;
     }
 
-    .project-hero-photo img {
-      width: clamp(280px, 30vw, 420px);
+    .proj-overview {
+      font-size: 15px;
+      color: var(--navy);
+      line-height: 1.7;
+    }
+
+    .proj-body {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+    }
+
+    .proj-media-col {
+      flex: 1 1 0;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .proj-media-col img,
+    .proj-media-col video {
+      width: 100%;
       height: auto;
+      flex-shrink: 0;
       border-radius: 8px;
       display: block;
       box-shadow: 0 6px 20px rgba(46, 66, 86, 0.15);
     }
 
-    /* ── Details: diagram + info box ── */
-    .project-details {
-      display: flex;
-      width: 100%;
-      max-width: 1600px;
-      margin: 0 auto;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 60px;
-      padding: 32px 260px 96px;
-      flex-wrap: wrap;
+    .proj-media-col video { background-color: #d9d7cd; }
+
+    .proj-media-col.fill {
+      overflow: hidden;
     }
 
-    .project-diagram {
-      flex: 1 1 420px;
-      max-width: 560px;
+    .proj-media-col.fill img,
+    .proj-media-col.fill video {
+      height: 100%;
+      object-fit: cover;
+      object-position: center 65%;
     }
 
-    .project-diagram img {
-      width: 100%;
-      height: auto;
-      display: block;
+    .proj-media-col::-webkit-scrollbar { width: 6px; }
+    .proj-media-col::-webkit-scrollbar-track { background: transparent; }
+    .proj-media-col::-webkit-scrollbar-thumb {
+      background-color: var(--accent);
+      border-radius: 3px;
     }
 
-    .project-info-box {
-      flex: 1 1 420px;
-      max-width: 620px;
-      background-color: var(--box-bg);
+    .proj-info-box {
+      flex: 0 0 600px;
       border-radius: 10px;
-      padding: 40px;
+      padding: 28px;
     }
 
-    .project-info-box h2 {
+    .proj-info-box h4 {
       font-family: 'Pangolin', cursive;
-      font-size: 20px;
+      font-size: 18px;
       font-weight: 400;
       color: var(--navy);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
 
-    .project-info-box h2:not(:first-child) {
-      margin-top: 28px;
+    .proj-info-box h4:not(:first-child) {
+      margin-top: 24px;
     }
 
     .skills-columns {
       display: flex;
-      gap: 40px;
+      flex-wrap: wrap;
+      gap: 8px 24px;
     }
 
     .skills-columns ul,
@@ -214,7 +259,7 @@
     .skills-columns li,
     .contributions li {
       font-size: 15px;
-      color: var(--navy-soft);
+      color: var(--navy);
       margin-bottom: 10px;
       padding-left: 18px;
       position: relative;
@@ -233,20 +278,25 @@
     @media (max-width: 900px) {
       nav { padding: 20px 24px; }
       .back-link { padding: 0 24px; }
-      .page-header { padding: 24px 24px 8px; }
+      .page-header { padding: 24px 24px 20px; }
 
-      .project-hero {
-        flex-direction: column;
-        padding: 24px 24px 32px;
-        gap: 32px;
+      .projects-list {
+        padding: 0 24px 60px;
       }
 
-      .project-hero-photo img { width: 100%; }
-
-      .project-details {
+      .proj-header {
         flex-direction: column;
-        padding: 16px 24px 60px;
-        gap: 32px;
+        align-items: flex-start;
+        gap: 4px;
+      }
+
+      .proj-body {
+        flex-direction: column;
+      }
+
+      .proj-media-col {
+        flex: 0 0 auto;
+        width: 100%;
       }
 
       .skills-columns { flex-direction: column; gap: 4px; }
@@ -277,55 +327,83 @@
 
   <a class="back-link" href="projects.html">&larr; Back to Projects</a>
 
-  <div class="page-header">
-    <h1>Puck 'em Back</h1>
-  </div>
+  <!-- ── Project ── -->
+  <main class="projects-list" style="padding-top: 24px;">
 
-  <!-- ── Overview + hero photo ── -->
-  <section class="project-hero">
-    <div class="project-hero-text">
-      <p class="label">OVERVIEW</p>
-      <p>
-        Puck 'em Back is an arcade game inspired by Plants vs. Zombies based off of
-        air hockey table mechanisms. The premise of the game is for the user to use
-        the hockey puck to hit the zombies and prevent them from crossing the red
-        line. Once a zombie crosses the red line, they've invaded and you're out.
-      </p>
-    </div>
-
-    <div class="project-hero-photo">
-      <img src="photos/airhockey.jpeg" alt="Puck 'em Back arcade game" />
-    </div>
-  </section>
-
-  <!-- ── Diagram + skills/contributions ── -->
-  <section class="project-details">
-    <div class="project-diagram">
-      <img src="photos/arcade-components.png" alt="Labeled diagram of Puck 'em Back table" />
-    </div>
-
-    <div class="project-info-box">
-      <h2>KEY SKILLS</h2>
-      <div class="skills-columns">
-        <ul>
-          <li>Circuit Design</li>
-          <li>Soldering</li>
-        </ul>
-        <ul>
-          <li>Arduino</li>
-          <li>C++</li>
-          <li>Systems Integration</li>
-        </ul>
+    <!-- Puck 'em Back -->
+    <div class="proj-card">
+      <div class="proj-header">
+        <h1 class="proj-title">Puck 'em Back</h1>
+        <p class="proj-tags">Sep 2025 - Apr 2026</p>
       </div>
 
-      <h2>KEY CONTRIBUTIONS</h2>
-      <ul class="contributions">
-        <li>Designed and painted the scoreboard layout</li>
-        <li>Designed and soldered the electrical circuit for the timer and scoring display using shift registers, Arduino, and 7 segment displays</li>
-        <li>Final systems integration, integrating the mechanical motors with timer and hit detection and audio</li>
-      </ul>
+      <div class="proj-overview-block">
+        <p class="proj-label">OVERVIEW</p>
+        <p class="proj-overview">
+          Puck 'em Back is an arcade game inspired by Plants vs. Zombies based off of
+          air hockey table mechanisms. The premise of the game is for the user to use
+          the hockey puck to hit the zombies and prevent them from crossing the red
+          line. Once a zombie crosses the red line, they've invaded and you're out.
+        </p>
+      </div>
+
+      <div class="proj-body">
+        <div class="proj-media-col">
+          <img src="photos/airhockey.jpeg" alt="Puck 'em Back arcade game" />
+          <img src="photos/arcade-components.png" alt="Labeled diagram of Puck 'em Back table" />
+          <video controls poster="photos/airhockey.jpeg">
+            <source src="photos/puck-em-back-demo.mp4" type="video/mp4">
+            Your browser doesn't support embedded video.
+          </video>
+          <img src="photos/puck-em-back-7-seg.jpeg" alt="Puck 'em Back 7 segment display" />
+        </div>
+
+        <div class="proj-info-box" style="background-color:#E7CFAE;">
+          <h4>KEY SKILLS</h4>
+          <div class="skills-columns">
+            <ul>
+              <li>Circuit Design</li>
+              <li>Soldering</li>
+            </ul>
+            <ul>
+              <li>Arduino</li>
+              <li>C++</li>
+            </ul>
+            <ul>
+              <li>Systems Integration</li>
+            </ul>
+          </div>
+
+          <h4>KEY CONTRIBUTIONS</h4>
+          <ul class="contributions">
+            <li>Designed and painted the scoreboard layout</li>
+            <li>Designed and soldered the electrical circuit for the timer and scoring display using shift registers, Arduino, and 7 segment displays</li>
+            <li>Final systems integration, integrating the mechanical motors with timer and hit detection and audio</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </section>
+
+  </main>
+
+  <script>
+    function syncMediaHeights() {
+      const isStacked = window.matchMedia('(max-width: 900px)').matches;
+      document.querySelectorAll('.proj-body').forEach(body => {
+        const media = body.querySelector('.proj-media-col');
+        const infoBox = body.querySelector('.proj-info-box');
+        if (!media || !infoBox) return;
+        const height = isStacked ? '' : infoBox.offsetHeight + 'px';
+        if (media.classList.contains('fill')) {
+          media.style.height = height;
+        } else {
+          media.style.maxHeight = height;
+        }
+      });
+    }
+    window.addEventListener('load', syncMediaHeights);
+    window.addEventListener('resize', syncMediaHeights);
+  </script>
 
 </body>
 </html>
